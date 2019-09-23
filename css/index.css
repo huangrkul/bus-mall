@@ -1,0 +1,13 @@
+.product-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.product-container ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.product-container ul li {
+  flex: 1 1 20%;
+}
