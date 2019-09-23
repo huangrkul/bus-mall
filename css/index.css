@@ -5,9 +5,14 @@
 
 .product-container ul {
   display: flex;
+  align-items: center;
   list-style-type: none;
 }
 
 .product-container ul li {
   flex: 1 1 20%;
+}
+
+.product-container ul li img {
+  width: 80%;
 }
