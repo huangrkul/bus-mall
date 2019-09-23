@@ -27,3 +27,5 @@ function renderImg() {
 
 //a property in constructor function that holds an array of all the instants.
 SomeCons.allImgs = [];
+
+
