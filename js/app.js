@@ -1,5 +1,7 @@
 'use strict';
 
+//the images should not show up repeatedly (from prior 3)
+
 var nullVar = null; //start null then add value later
 
 //uppercase first letter in constructor name!!!!
