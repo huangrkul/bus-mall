@@ -16,8 +16,13 @@ As a reminder, user stories typically take the form of, “As X, I want Y, so th
 - I want to see the popularity of each product so I know which product should have more exposure in the design.
 - I want to see a complete data analysis of the app so I can better understand how to present the products.
 - I want to see if there is a pattern to what participants like so we can add similar products onto the list in the future.
+- I expect the layout of the data to be straightforward and easy to understand so we can process the data faster.
 ## User Stories - THE DEVELOPERS
 - I want to make sure the app is extremely UX / UI friendly so that both marketing team and participants will have a good experience.
 - I want to make sure the app is built to spec per marketing team's requests so the output data is exactly what they wanted.
+- I want to make sure the code is clean and efficient so the app can run really smooth.
+- I want to make sure the data analysis is presented in various charts using chart.js so the marketing team can better understand the data.
 ## User Stories = FOCUS GROUP
-- As participant, I want to see 
+- I want the app to be easy to read and simple to use so it makes the process easier.
+- I want the app to run quickly and efficiently so it takes less time to repeat the process.
+- 
