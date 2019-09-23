@@ -22,7 +22,7 @@ As a reminder, user stories typically take the form of, “As X, I want Y, so th
 - I want to make sure the app is built to spec per marketing team's requests so the output data is exactly what they wanted.
 - I want to make sure the code is clean and efficient so the app can run really smooth.
 - I want to make sure the data analysis is presented in various charts using chart.js so the marketing team can better understand the data.
-## User Stories = FOCUS GROUP
+## User Stories - FOCUS GROUP
 - I want the app to be easy to read and simple to use so it makes the process easier.
 - I want the app to run quickly and efficiently so it takes less time to repeat the process.
-- 
+- I would like to see the data analysis too so I know how my choices affected the result.
