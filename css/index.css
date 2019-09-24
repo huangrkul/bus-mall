@@ -15,4 +15,5 @@
 
 .product-container ul li img {
   width: 80%;
+  cursor: pointer;
 }

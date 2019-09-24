@@ -1,17 +1,20 @@
 'use strict';
 
-//the images should not show up repeatedly (from prior 3)
+//CONFIGURABLES/////////////
+var prodDisplayNumbers = 6; //how many images need to be generated on screen.
+var totalTries = 25;
+/////////////////////////////
 
-//variables for html anchors
-// var imgBox = document.getElementById('imgsContainer');
+//variable for html anchors
 var imgList = document.getElementById('imgsList');
 
 //global variables that will be used later.
 var liEl = null;
 var imgEl = null;
 var priorProducts = [];
+var prodImgArray = [];
 
-//actual images in an Array
+//object arguments: name and ext
 var objArray = [
   ['bag','.jpg'],
   ['banana','.jpg'],
@@ -35,7 +38,7 @@ var objArray = [
   ['wine-glass','.jpg']
 ];
 
-var prodDisplayNumbers = 3; //how many images need to be generated;
+var currentTries = 0;
 
 //uppercase first letter in constructor name!!!!
 function Products (name, ext) {
@@ -60,8 +63,9 @@ function randomProd() {
 function renderProds() {
   //this holds the 3 unique random numbers
   var randArray = [];
-  var prodImgArray = [];
   var randIndex = null;
+  var arrayToCheck = null;
+  prodImgArray = [];
 
   //copy randArray values into priorProducts Array.
 
@@ -77,6 +81,7 @@ function renderProds() {
   /*the do while loop does the following in order:
   1. If the priorProducts Array is empty, generate the first random number.
   2. If not, generate a random number and evaluate it with existing numbers in the randArray AND priorProducts Array
+  2.5 arrayToCheck against is either priorProducts or randArray depending on if this is the first time rendering.
   3. During the evaluation, if the number matches existing number in arrays, isRepeated = true.
   4. If not, isRepeated remains false.
   5. If the evaluation returns a false, which means the number is unique, therefore, can be pushed into the array.
@@ -86,10 +91,16 @@ function renderProds() {
     if(priorProducts.length === 0) {
       randIndex = randomProd();
       randArray.push(randIndex);
+      priorProducts.push(randIndex);
     } else {
       randIndex = randomProd();
       var isRepeated = false;
-      for(var i=0; i < priorProducts.length; i++) {
+      if(priorProducts.length === 1) {
+        arrayToCheck = randArray;
+      } else {
+        arrayToCheck = priorProducts;
+      }
+      for(var i=0; i < arrayToCheck.length; i++) {
         if(randIndex === randArray[i] || randIndex === priorProducts[i]) {
           isRepeated = true;
         }
@@ -121,9 +132,19 @@ function imgClickHandler(event) {
       console.log(Products.allProds[i].clicked);
     }
   }
-  imgList.innerHTML = '';
-  renderProds();
+  currentTries++;
+  if (currentTries <= totalTries){
+    imgList.innerHTML = '';
+    renderProds();
+  } else {
+    alert('That is it');
+    for (var i=0; i < prodImgArray.length; i++){
+      prodImgArray[i].removeEventListener('click',imgClickHandler);
+      prodImgArray[i].style.cursor = 'auto';
+    }
+  }
 }
+
 
 
 function init() {
