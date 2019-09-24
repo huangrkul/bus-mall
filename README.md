@@ -41,5 +41,6 @@ Class 201 Week 3 Project
 
 ## Day 2 branch - lab12-chartjs
 - Implement chart for BusMall using chart.js
-
+- Refactored the code so that empty list and chart will be generated at the start.
+- Once user is done with the app, the list and chart will be populated accordingly.
 
