@@ -5,8 +5,9 @@ var prodDisplayNumbers = 6; //how many images need to be generated on screen.
 var totalTries = 25;
 /////////////////////////////
 
-//variable for html anchors
+//variables for html anchors
 var imgList = document.getElementById('imgsList');
+var results = document.getElementById('results');
 
 //global variables that will be used later.
 var liEl = null;
@@ -124,27 +125,39 @@ function renderProds() {
   console.log(priorProducts);
 }
 
+//this handles the click event
 function imgClickHandler(event) {
   console.log(event.target);
+  //keeps track of all the items clicked
   for (var i=0; i < Products.allProds.length; i++){
     if(event.target.id === Products.allProds[i].name) {
       Products.allProds[i].clicked++;
       console.log(Products.allProds[i].clicked);
     }
   }
+  //increment tries
   currentTries++;
+
+  //if not at total, then remove all li and render() again
   if (currentTries <= totalTries){
     imgList.innerHTML = '';
     renderProds();
   } else {
+    //if hits total tries
     alert('That is it');
+    //remove all eventlisteners from current images, change cursor style back to auto
     for (var i=0; i < prodImgArray.length; i++){
       prodImgArray[i].removeEventListener('click',imgClickHandler);
       prodImgArray[i].style.cursor = 'auto';
     }
+    displayResult();
   }
 }
 
+//generate all results as one list
+function displayResult() {
+
+}
 
 
 function init() {
