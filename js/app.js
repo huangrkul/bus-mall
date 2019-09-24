@@ -1,8 +1,8 @@
 'use strict';
 
 //CONFIGURABLES/////////////
-var prodDisplayNumbers = 6; //how many images need to be generated on screen.
-var totalTries = 25;
+var prodDisplayNumbers = 3; //how many images need to be generated on screen.
+var totalTries = 5;
 /////////////////////////////
 
 //variables for html anchors
@@ -156,7 +156,12 @@ function imgClickHandler(event) {
 
 //generate all results as one list
 function displayResult() {
-
+  for (var i=0; i < Products.allProds.length; i++) {
+    var resultLi = document.createElement('li');
+    var product = Products.allProds[i];
+    resultLi.textContent = `${product.name} has a total of ${product.views} views / ${product.clicked} clicks`;
+    results.appendChild(resultLi);
+  }
 }
 
 

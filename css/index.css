@@ -17,3 +17,12 @@
   width: 80%;
   cursor: pointer;
 }
+
+.product-results {
+  width: 20%;
+  margin: 2em auto;
+}
+
+.product-results li:nth-child(even) {
+  background-color: #ddd;
+}
