@@ -2,7 +2,7 @@
 
 //CONFIGURABLES/////////////
 var prodDisplayNumbers = 3; //how many images need to be generated on screen.
-var totalTries = 10;
+var totalTries = 25;
 /////////////////////////////
 
 //variables for html anchors
@@ -211,6 +211,7 @@ function init() {
   }
 
   //fetch Products.allProds.name and push them into chartLabel
+  //set initial bar data value, bar color, and bar border color
   chartLabels = [];
   for(var i=0; i < Products.allProds.length; i++) {
     var products = Products.allProds[i];
@@ -223,7 +224,7 @@ function init() {
     chartVoteBorders.push('rgba(227,171,48,0.8)');
   }
 
-  //create empty bar chart with labels
+  //create empty bar chart with labels and initial values from the above loop.
   theChart = new Chart(barChart, {
     type: 'bar',
     data: {
