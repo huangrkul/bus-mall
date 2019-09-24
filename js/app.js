@@ -2,7 +2,7 @@
 
 //CONFIGURABLES/////////////
 var prodDisplayNumbers = 3; //how many images need to be generated on screen.
-var totalTries = 25;
+var totalTries = 10;
 /////////////////////////////
 
 //variables for html anchors
@@ -40,6 +40,17 @@ var objArray = [
 ];
 
 var currentTries = 0;
+
+//chart var
+var barChart = document.getElementById('barChart').getContext('2d');
+var theChart;
+var chartLabels = [];
+var chartViews = [];
+var chartViewColors = [];
+var chartViewBorders = [];
+var chartVotes = [];
+var chartVoteColors = [];
+var chartVoteBorders = [];
 
 //uppercase first letter in constructor name!!!!
 function Products (name, ext) {
@@ -157,19 +168,96 @@ function imgClickHandler(event) {
 
 //generate all results as one list
 function displayResult() {
+  var resultLi = document.getElementsByClassName('resultList');
   for (var i=0; i < Products.allProds.length; i++) {
-    var resultLi = document.createElement('li');
     var product = Products.allProds[i];
-    resultLi.textContent = `${product.name} has a total of ${product.views} views / ${product.clicked} clicks`;
-    results.appendChild(resultLi);
+    resultLi[i].textContent += ` ${product.views} views / ${product.clicked} votes`;
   }
+  generateChart();
+}
+
+//generate chart with all data
+function generateChart() {
+  chartViews = [];
+  chartVotes = [];
+
+  for(var i=0; i < Products.allProds.length; i++) {
+    var products = Products.allProds[i];
+    chartViews.push(products.views);
+    chartVotes.push(products.clicked);
+  }
+  theChart.data.datasets[0].data = chartViews;
+  theChart.data.datasets[1].data = chartVotes;
+  console.log(theChart.data.datasets[0].data);
+  theChart.update();
 }
 
 //constructor function instantiate
+//create empty result list with product names
+//create empty chart with product names
 function init() {
+
+  //instantiate objects
   for(var i=0; i < objArray.length; i++){
     new Products(objArray[i][0], objArray[i][1]);
   }
+  //create empty result list
+  for (var i=0; i < Products.allProds.length; i++) {
+    var empResultLi = document.createElement('li');
+    var product = Products.allProds[i];
+    empResultLi.classList.add('resultList');
+    empResultLi.textContent = `${product.name}:`;
+    results.appendChild(empResultLi);
+  }
+
+  //fetch Products.allProds.name and push them into chartLabel
+  chartLabels = [];
+  for(var i=0; i < Products.allProds.length; i++) {
+    var products = Products.allProds[i];
+    chartLabels.push(products.name);
+    chartViews.push(0);
+    chartViewColors.push('rgba(206,86,56,0.5)');
+    chartViewBorders.push('rgba(206,86,56,0.8)');
+    chartVotes.push(0);
+    chartVoteColors.push('rgba(227,171,48,0.5)');
+    chartVoteBorders.push('rgba(227,171,48,0.8)');
+  }
+
+  //create empty bar chart with labels
+  theChart = new Chart(barChart, {
+    type: 'bar',
+    data: {
+      labels: chartLabels,
+      datasets: [
+        {
+          label: '# of Views',
+          data: chartViews,
+          backgroundColor: chartViewColors,
+          borderColor: chartViewBorders,
+          borderWidth: 1
+        },
+        {
+          label: '# of Votes',
+          data: chartVotes,
+          backgroundColor: chartVoteColors,
+          borderColor: chartVoteBorders,
+          borderWidth: 1
+        }
+      ],
+    },
+    options: {
+      responsive: true,
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+  //start rendering!
   renderProds();
 }
 

@@ -1,15 +1,10 @@
 @import 'index.css';
 @import 'fonts.css';
 
-/* site colors guide */
-.sienna-uldrk {color: #260f0a;;}
-.sienna-exdrk {color: #5e261a;}
-.sienna-drk   {color: #bc4c34;}
-.sienna-med   {color: #c35e48;}
-.sienna-lgt   {color: #dea69a;}
-.site-yellow  {color: #dcb780;}
-.site-y-lgt   {color: #dfc49d;}
-.site-blk     {color: #36342b;}
+/* color guide: http://www.hp-stylelink.com/news/2013/07/20130708.php#lowList14 */
+.site-yw      {color: #c8d85b;}
+.site-blue    {color: #6bb6bb;}
+.site-blk     {color: #203738;}
 .site-wht     {color: #f8edeb;}
 
 /* site global styles */

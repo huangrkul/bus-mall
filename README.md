@@ -1,7 +1,7 @@
 # Bus-Mall
 Class 201 Week 3 Project
 
-## User Stories
+##User Story - User##
 **As a user, I would like to display three random products by chance so that the viewers can pick a favorite.**
 - Create a constructor function that creates an object associated with each product, and has the following properties:
 - Name of the product
@@ -27,9 +27,20 @@ Class 201 Week 3 Project
 - After voting rounds have been completed, remove the event listeners on the products
 - Display the list of all the products followed by the votes received and number of times seen for each. Example: Banana Slicer had 3 votes and was seen 5 times
 
+##User Story - Marketing Manger##
+**As a marketing manager, I would like a visual representation of how many times a product was clicked so that I can visually analyze the results.**
+- Using ChartJS (imported from CDN), display the vote totals in a bar chart. (hint: don’t forget about the <canvas> tags)
+- Place the bar chart in the section located beneath your three product images
+
 ## Day 1 branch - lab11-busmall
 - Implemented dynamic products display so it can be any number of images.
 - All products currently / previously displayed do not repeat.
 - Views and Clicked products are tracked and displayed at the end as a list.
 - Default 25 rounds of tries have been implemented.
 - After 25 rounds, the products will no longer be clickable.
+
+## Day 2 branch - lab12-chartjs
+- Implement chart for BusMall using chart.js
+- Refactored the code so that empty list and chart will be generated at the start.
+- Once user is done with the app, the list and chart will be populated accordingly.
+
