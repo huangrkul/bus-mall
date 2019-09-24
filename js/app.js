@@ -80,9 +80,9 @@ function renderProds() {
     prodImgArray.push(imgEl);
   }
   /*the do while loop does the following in order:
-  1. If the priorProducts Array is empty, generate the first random number.
+  1. If the priorProducts Array is empty, generate the first random number. Also push the number into priorProduct array.
   2. If not, generate a random number and evaluate it with existing numbers in the randArray AND priorProducts Array
-  2.5 arrayToCheck against is either priorProducts or randArray depending on if this is the first time rendering.
+  2.5 arrayToCheck is either priorProducts or randArray depending on if this is the first time rendering.
   3. During the evaluation, if the number matches existing number in arrays, isRepeated = true.
   4. If not, isRepeated remains false.
   5. If the evaluation returns a false, which means the number is unique, therefore, can be pushed into the array.
@@ -121,6 +121,7 @@ function renderProds() {
     console.log(products[randArray[k]]);
   }
 
+  //priorProduct clones randArray values
   priorProducts = randArray.slice(0);
   console.log(priorProducts);
 }
@@ -146,9 +147,9 @@ function imgClickHandler(event) {
     //if hits total tries
     alert('Thank you for your feedback!  Here is the result:');
     //remove all eventlisteners from current images, change cursor style back to auto
-    for (var i=0; i < prodImgArray.length; i++){
-      prodImgArray[i].removeEventListener('click',imgClickHandler);
-      prodImgArray[i].style.cursor = 'auto';
+    for (var k=0; k < prodImgArray.length; k++){
+      prodImgArray[k].removeEventListener('click',imgClickHandler);
+      prodImgArray[k].style.cursor = 'auto';
     }
     displayResult();
   }
@@ -164,7 +165,7 @@ function displayResult() {
   }
 }
 
-
+//constructor function instantiate
 function init() {
   for(var i=0; i < objArray.length; i++){
     new Products(objArray[i][0], objArray[i][1]);
