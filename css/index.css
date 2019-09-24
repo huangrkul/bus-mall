@@ -1,0 +1,28 @@
+.product-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.product-container ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+
+.product-container ul li {
+  flex: 1 1 20%;
+}
+
+.product-container ul li img {
+  width: 80%;
+  cursor: pointer;
+}
+
+.product-results {
+  width: 20%;
+  margin: 2em auto;
+}
+
+.product-results li:nth-child(even) {
+  background-color: #ddd;
+}

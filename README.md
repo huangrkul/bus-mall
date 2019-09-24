@@ -28,3 +28,8 @@ Class 201 Week 3 Project
 - Display the list of all the products followed by the votes received and number of times seen for each. Example: Banana Slicer had 3 votes and was seen 5 times
 
 ## Day 1 branch - lab11-busmall
+- Implemented dynamic products display so it can be any number of images.
+- All products currently / previously displayed do not repeat.
+- Views and Clicked products are tracked and displayed at the end as a list.
+- Default 25 rounds of tries have been implemented.
+- After 25 rounds, the products will no longer be clickable.
