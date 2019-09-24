@@ -2,7 +2,7 @@
 
 //CONFIGURABLES/////////////
 var prodDisplayNumbers = 3; //how many images need to be generated on screen.
-var totalTries = 5;
+var totalTries = 25;
 /////////////////////////////
 
 //variables for html anchors
@@ -144,7 +144,7 @@ function imgClickHandler(event) {
     renderProds();
   } else {
     //if hits total tries
-    alert('That is it');
+    alert('Thank you for your feedback!  Here is the result:');
     //remove all eventlisteners from current images, change cursor style back to auto
     for (var i=0; i < prodImgArray.length; i++){
       prodImgArray[i].removeEventListener('click',imgClickHandler);
