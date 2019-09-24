@@ -2,6 +2,10 @@
   outline: 1px solid orange;
 } */
 
+body {
+  background-color: white;
+}
+
 header {
   text-align: center;
   padding: 2em;
@@ -38,7 +42,7 @@ header {
 
 .product-results {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin: 2em auto;
 }
 
