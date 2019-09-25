@@ -8,23 +8,29 @@
   <title>Bus-Mall</title>
 </head>
 <body>
-  <header>
-    <h1 class="site-wht mont">BUS-MALL</h1>
-  </header>
-  <main>
-    <section class="product-container">
-      <ul id="imgsList"></ul>
-    </section>
-    <section class="product-results">
-      <ul id="results">
-        <h2>Results Total</h2>
-      </ul>
-      <div>
-        <h2>Results Chart</h2>
-        <canvas id="barChart"></canvas>
-      </div>
-    </section>
+  <div class="app-wrapper">
+    <header>
+      <h1 class="site-wht mont">BUS-MALL</h1>
+    </header>
+    <main>
+      <section class="product-container">
+        <ul id="imgsList"></ul>
+        <p class="site-blk robo">User Instruction: Please click on a product above that interests you. Each vote will display three more products.  After <span id="tries" class="site-wht"><sub></sub></span> rounds, the session will end and display your results.  Thank you!</p>
+      </section>
+      <section class="product-results">
+        <ul id="results">
+          <h2>Results Total</h2>
+        </ul>
+        <div>
+          <h2>Results Chart</h2>
+          <canvas id="barChart"></canvas>
+        </div>
+      </section>
     </main>
+    <footer id="footer">
+      <div id="preload"></div>
+    </footer>
+  </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
     <script src="js/app.js"></script>
 </body>

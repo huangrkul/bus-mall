@@ -43,4 +43,5 @@ Class 201 Week 3 Project
 - Implement chart for BusMall using chart.js
 - Refactored the code so that empty list and chart will be generated at the start.
 - Once user is done with the app, the list and chart will be populated accordingly.
-
+- Added additional styling across the page.
+- Added product image preload in init() to prevent flickering during image swap (caused by image load).
