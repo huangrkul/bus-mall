@@ -1,7 +1,7 @@
 'use strict';
 
 //CONFIGURABLES/////////////
-var prodDisplayNumbers = 12; //how many images need to be generated on screen.
+var prodDisplayNumbers = 3; //how many images need to be generated on screen.
 var totalTries = 25;
 /////////////////////////////
 
@@ -85,8 +85,14 @@ function renderProds() {
   //copy randArray values into priorProducts Array.
 
   //generate the li and img for the amount of prodDisplayNumbers
+  //depending on total displayed products, the li tag will have different class that caters to the overall design.
   for(var j=0; j < prodDisplayNumbers; j++){
     liEl = document.createElement('li');
+    if(prodDisplayNumbers < 5){
+      liEl.classList.add('products-few');
+    } else {
+      liEl.classList.add('products-lots');
+    }
     imgEl = document.createElement('img');
     imgEl.addEventListener('click', imgClickHandler);
     liEl.appendChild(imgEl);

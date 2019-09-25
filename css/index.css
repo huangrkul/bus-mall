@@ -55,12 +55,21 @@ main {
 }
 
 .product-container ul li {
-  flex: 0 1 20%;
   flex-wrap: wrap;
   padding: 1em;
   margin: 0 auto;
   text-align: center;
 }
+
+/* dynamic classes that will be added depend on # of display products */
+.products-few {
+  flex: 1 1 20%;
+}
+
+.products-lots {
+  flex: 0 1 25%;
+}
+/* ================================================================= */
 
 .product-container ul li img {
   width: 60%;
@@ -71,7 +80,7 @@ main {
 }
 
 .product-container ul li img:hover {
-  border: 1.5em solid #53352d;
+  border: 1.5em solid #68473e;
 }
 
 .product-container p {
