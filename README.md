@@ -27,7 +27,7 @@ Class 201 Week 3 Project
 - After voting rounds have been completed, remove the event listeners on the products
 - Display the list of all the products followed by the votes received and number of times seen for each. Example: Banana Slicer had 3 votes and was seen 5 times
 
-##User Story - Marketing Manger##
+## User Story - Marketing Manger
 **As a marketing manager, I would like a visual representation of how many times a product was clicked so that I can visually analyze the results.**
 - Using ChartJS (imported from CDN), display the vote totals in a bar chart. (hint: don’t forget about the <canvas> tags)
 - Place the bar chart in the section located beneath your three product images
