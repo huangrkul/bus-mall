@@ -2,7 +2,7 @@
 
 //CONFIGURABLES/////////////
 var prodDisplayNumbers = 3; //how many images need to be generated on screen.
-var totalTries = 5;
+var totalTries = 25;
 /////////////////////////////
 
 //variables for html anchors
