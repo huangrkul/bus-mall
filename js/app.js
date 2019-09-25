@@ -214,10 +214,12 @@ function parseDataPopulate() {
   }
 }
 
+//vote again will refresh the page.
 function voteAgainHandler() {
   location.reload();
 }
 
+//clear button will clear localstorage and refresh the page.
 function clearHandler() {
   localStorage.clear();
   location.reload();
@@ -267,6 +269,7 @@ function createEmptyList() {
   }
 }
 
+//create an empty chart in the beginning.
 function createEmptyChart() {
   //fetch Products.allProds.name and push them into chartLabel
   //set initial bar data value, bar color, and bar border color
@@ -345,6 +348,7 @@ function init() {
   renderProds();
 }
 
+//start the app
 init();
 
 
