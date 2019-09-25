@@ -71,7 +71,7 @@ main {
 }
 
 .product-container ul li img:hover {
-  border: 1.5em solid #503129;
+  border: 1.5em solid #53352d;
 }
 
 .product-container p {
@@ -115,6 +115,20 @@ main {
 
 #barChart {
   width: 80%;
+}
+
+footer p {
+  margin-top: 1em;
+  text-align: center;
+}
+
+footer p a {
+  text-decoration: none;
+  color: #d3e9eb;
+}
+
+footer p a:hover {
+  color: #f3f3f3;
 }
 
 #preload {
