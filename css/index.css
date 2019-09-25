@@ -61,16 +61,6 @@ main {
   text-align: center;
 }
 
-/* dynamic classes that will be added depend on # of display products */
-.products-few {
-  flex: 1 1 20%;
-}
-
-.products-lots {
-  flex: 0 1 25%;
-}
-/* ================================================================= */
-
 .product-container ul li img {
   width: 60%;
   cursor: pointer;
@@ -89,6 +79,27 @@ main {
   width: 60%;
 }
 
+/* dynamic classes that will be added depend on # of display products */
+.products-few {
+  flex: 1 1 20%;
+}
+
+.products-lots {
+  flex: 0 1 25%;
+}
+/* ================================================================= */
+
+/* hide and show result box */
+.hide-results {
+  opacity: 0;
+}
+
+.show-results {
+  opacity: 1;
+}
+/* ================================================================= */
+
+/* result box */
 .product-results {
   transition: all 800ms ease;
   align-items: flex-start;
@@ -99,14 +110,7 @@ main {
   box-sizing: border-box;
 }
 
-.hide-results {
-  opacity: 0;
-}
-
-.show-results {
-  opacity: 1;
-}
-
+/* result list */
 .product-results ul, .product-results div {
   padding: 2em;
 } 
@@ -114,7 +118,6 @@ main {
 .product-results ul{
   flex: 1 1 35%;
   list-style-position: inside;
-  /* border-right: 3px dotted #6bb6bb; */
 }
 
 .product-results ul li {
@@ -126,6 +129,7 @@ main {
   background-color: #d3e9eb;
 }
 
+/* chart, vote again button, clear data button */
 .product-results div {
   flex: 1 1 62%;
 }
@@ -134,6 +138,32 @@ main {
   width: 80%;
 }
 
+.buttonsBox {
+  text-align: center;
+}
+
+.buttonsBox p:nth-last-child(2) , .buttonsBox > p:last-child {
+  display: inline-block;
+  background-color: #3d1a11;
+  border: 1em solid #3d1a11;
+  border-radius: 10px;
+  margin: 0 2em 0 2em;
+  cursor: pointer;
+  color: #f3f3f3;
+  transition: all 300ms ease;
+}
+
+.buttonsBox p:nth-last-child(2):hover , .buttonsBox > p:last-child:hover {
+  background-color: #68473e;
+  border: 1em solid #68473e;
+  color: #f3f3f3;
+}
+
+.buttonsBox p:nth-last-child(2):active , .buttonsBox > p:last-child:active {
+  color: #6bb6bb;
+}
+
+/* footer */
 footer p {
   margin-top: 1em;
   text-align: center;
