@@ -202,9 +202,9 @@ function init() {
     new Products(objArray[i][0], objArray[i][1]);
   }
   //create empty result list
-  for (var i=0; i < Products.allProds.length; i++) {
+  for (var k=0; k < Products.allProds.length; k++) {
     var empResultLi = document.createElement('li');
-    var product = Products.allProds[i];
+    var product = Products.allProds[k];
     empResultLi.classList.add('resultList');
     empResultLi.textContent = `${product.name}:`;
     results.appendChild(empResultLi);
@@ -213,9 +213,9 @@ function init() {
   //fetch Products.allProds.name and push them into chartLabel
   //set initial bar data value, bar color, and bar border color
   chartLabels = [];
-  for(var i=0; i < Products.allProds.length; i++) {
-    var products = Products.allProds[i];
-    chartLabels.push(products.name);
+  for(var j=0; i < Products.allProds.length; j++) {
+    var productLabels = Products.allProds[j];
+    chartLabels.push(productLabels.name);
     chartViews.push(0);
     chartViewColors.push('rgba(206,86,56,0.5)');
     chartViewBorders.push('rgba(206,86,56,0.8)');
