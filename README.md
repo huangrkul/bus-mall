@@ -1,7 +1,7 @@
 # Bus-Mall
 Class 201 Week 3 Project
 
-##User Story - User
+## User Story - User
 **As a user, I would like to display three random products by chance so that the viewers can pick a favorite.**
 - Create a constructor function that creates an object associated with each product, and has the following properties:
 - Name of the product
