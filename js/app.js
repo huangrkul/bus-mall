@@ -1,7 +1,7 @@
 'use strict';
 
 //CONFIGURABLES/////////////
-var prodDisplayNumbers = 3; //how many images need to be generated on screen.
+var prodDisplayNumbers = 12; //how many images need to be generated on screen.
 var totalTries = 25;
 /////////////////////////////
 
@@ -96,11 +96,14 @@ function renderProds() {
   /*the do while loop does the following in order:
   1. If the priorProducts Array is empty, generate the first random number. Also push the number into priorProduct array.
   2. If not, generate a random number and evaluate it with existing numbers in the randArray AND priorProducts Array
-  2.5 arrayToCheck is either priorProducts or randArray depending on if this is the first time rendering.
-  3. During the evaluation, if the number matches existing number in arrays, isRepeated = true.
-  4. If not, isRepeated remains false.
-  5. If the evaluation returns a false, which means the number is unique, therefore, can be pushed into the array.
-  6. Repeat step 1 to 5 while the length of the randArray is less than prodDisplayNumbers.
+  3. arrayToCheck is either priorProducts or randArray depending on if this is the first time rendering.
+  4. Two conditions for evaluation:
+      - If more than half of total products are displayed, don't check against prior products.
+      - If not, check against both priorProducts and randArray.
+  5. During the evaluation, if the number matches existing number in arrays, isRepeated = true.
+  6. If not, isRepeated remains false.
+  7. If the evaluation returns a false, which means the number is unique, therefore, can be pushed into the array.
+  8. Repeat step 1 to 7 while the length of the randArray is less than prodDisplayNumbers.
   */
   do {
     if(priorProducts.length === 0) {
@@ -116,8 +119,14 @@ function renderProds() {
         arrayToCheck = priorProducts;
       }
       for(var i=0; i < arrayToCheck.length; i++) {
-        if(randIndex === randArray[i] || randIndex === priorProducts[i]) {
-          isRepeated = true;
+        if(prodDisplayNumbers < Products.allProds.length / 2) {
+          if(randIndex === randArray[i] || randIndex === priorProducts[i]) {
+            isRepeated = true;
+          }
+        } else {
+          if(randIndex === randArray[i]) {
+            isRepeated = true;
+          }
         }
       }
       if(!isRepeated) {
