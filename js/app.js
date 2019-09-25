@@ -7,6 +7,7 @@ var totalTries = 25;
 
 //variables for html anchors
 var imgList = document.getElementById('imgsList');
+var resultBox = document.getElementById('resultBox');
 var results = document.getElementById('results');
 var footer = document.getElementById('footer');
 var totalRnds = document.getElementById('tries');
@@ -17,6 +18,7 @@ var liEl = null;
 var imgEl = null;
 var priorProducts = [];
 var prodImgArray = [];
+var delayTimer = null;
 
 //object arguments: name and ext
 var objArray = [
@@ -188,17 +190,20 @@ function imgClickHandler(event) {
 
 //populate result total with actual data
 function displayResult() {
+  resultBox.classList.remove('hide-results');
+  resultBox.classList.add('show-results');
   var resultLi = document.getElementsByClassName('resultList');
   for (var i=0; i < Products.allProds.length; i++) {
     var product = Products.allProds[i];
     resultLi[i].textContent += ` ${product.views} views / ${product.clicked} votes`;
   }
   footer.scrollIntoView();
-  generateChart();
+  delayTimer = setTimeout(generateChart, 300);
 }
 
 //populate chart with actual data and update the chart.
 function generateChart() {
+  clearTimeout(delayTimer);
   chartViews = [];
   chartVotes = [];
 
