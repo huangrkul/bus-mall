@@ -9,7 +9,7 @@ body {
 .app-wrapper {
   width: 70%;
   margin: 2em auto;
-  border: 2em solid #203738;
+  border: 3em solid #203738;
   border-radius: 15px;
   background-color: #203738;
 }
@@ -95,21 +95,22 @@ main {
 } 
 
 .product-results ul{
-  flex: 1 1 30%;
+  flex: 1 1 35%;
   list-style-position: inside;
   /* border-right: 3px dotted #6bb6bb; */
 }
 
 .product-results ul li {
   padding: 0.1em;
+  font-size: 0.8vw;
 }
 
-.product-results li:nth-child(even) {
-  background-color: #ddd;
+.product-results li:nth-child(odd) {
+  background-color: #d3e9eb;
 }
 
 .product-results div {
-  flex: 1 1 60%;
+  flex: 1 1 62%;
 }
 
 #barChart {
