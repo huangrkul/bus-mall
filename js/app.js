@@ -8,6 +8,9 @@ var totalTries = 25;
 //variables for html anchors
 var imgList = document.getElementById('imgsList');
 var results = document.getElementById('results');
+var footer = document.getElementById('footer');
+var totalRnds = document.getElementById('tries');
+var preloadImgs = document.getElementById('preload');
 
 //global variables that will be used later.
 var liEl = null;
@@ -152,6 +155,8 @@ function imgClickHandler(event) {
 
   //if not at total, then remove all li and render() again
   if (currentTries <= totalTries){
+    //total tries get refreshed
+    totalRnds.textContent = totalTries - currentTries;
     imgList.innerHTML = '';
     renderProds();
   } else {
@@ -173,6 +178,7 @@ function displayResult() {
     var product = Products.allProds[i];
     resultLi[i].textContent += ` ${product.views} views / ${product.clicked} votes`;
   }
+  footer.scrollIntoView();
   generateChart();
 }
 
@@ -201,6 +207,18 @@ function init() {
   for(var i=0; i < objArray.length; i++){
     new Products(objArray[i][0], objArray[i][1]);
   }
+
+  //preload images to prevent image swap flickers due to img load.
+  for(var a=0; a < Products.allProds.length; a++){
+    var productImg = Products.allProds[a].image;
+    var preImg = document.createElement('img');
+    preImg.src = productImg;
+    preloadImgs.appendChild(preImg);
+  }
+
+  //display current total tries
+  totalRnds.textContent = totalTries;
+
   //create empty result list
   for (var k=0; k < Products.allProds.length; k++) {
     var empResultLi = document.createElement('li');
@@ -212,8 +230,7 @@ function init() {
 
   //fetch Products.allProds.name and push them into chartLabel
   //set initial bar data value, bar color, and bar border color
-  chartLabels = [];
-  for(var j=0; i < Products.allProds.length; j++) {
+  for(var j=0; j < Products.allProds.length; j++) {
     var productLabels = Products.allProds[j];
     chartLabels.push(productLabels.name);
     chartViews.push(0);
