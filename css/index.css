@@ -9,19 +9,23 @@ body {
 .app-wrapper {
   width: 70%;
   margin: 2em auto;
-  padding: 2em;
-  border: 1em solid #6bb6bb;
+  border: 2em solid #203738;
   border-radius: 15px;
-  background-color: #6bb6bb;
+  background-color: #203738;
 }
 
 header {
   text-align: center;
-  padding: 1em;
   background: #203738;
   border: 1em solid #203738;
+}
+
+main {
+  background-color: #6bb6bb;
+  border: 2em solid #6bb6bb;
   border-radius: 15px;
   box-sizing: border-box;
+  padding: 2em;
 }
 
 .product-container {
