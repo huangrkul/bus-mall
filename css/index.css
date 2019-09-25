@@ -100,13 +100,11 @@ main {
 }
 
 .hide-results {
-  display: none;
-  opacity: 0px;
+  opacity: 0;
 }
 
 .show-results {
-  display: flex;
-  opacity: 1px;
+  opacity: 1;
 }
 
 .product-results ul, .product-results div {

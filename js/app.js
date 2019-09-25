@@ -2,12 +2,14 @@
 
 //CONFIGURABLES/////////////
 var prodDisplayNumbers = 3; //how many images need to be generated on screen.
-var totalTries = 25;
+var totalTries = 5;
 /////////////////////////////
 
 //variables for html anchors
 var imgList = document.getElementById('imgsList');
 var resultBox = document.getElementById('resultBox');
+//hidden at start.
+resultBox.style.display = 'none';
 var results = document.getElementById('results');
 var footer = document.getElementById('footer');
 var totalRnds = document.getElementById('tries');
@@ -184,12 +186,16 @@ function imgClickHandler(event) {
       prodImgArray[k].removeEventListener('click',imgClickHandler);
       prodImgArray[k].style.cursor = 'auto';
     }
-    displayResult();
+    resultBox.style.display = 'flex';
+    footer.scrollIntoView();
+    //set a delay for opacity animation in displayResult();
+    delayTimer = setTimeout(displayResult, 100);
   }
 }
 
 //populate result total with actual data
 function displayResult() {
+  clearTimeout(delayTimer);
   resultBox.classList.remove('hide-results');
   resultBox.classList.add('show-results');
   var resultLi = document.getElementsByClassName('resultList');
@@ -197,8 +203,8 @@ function displayResult() {
     var product = Products.allProds[i];
     resultLi[i].textContent += ` ${product.views} views / ${product.clicked} votes`;
   }
-  footer.scrollIntoView();
-  delayTimer = setTimeout(generateChart, 300);
+  //set a delay so the graph can animate in rather than displayed already.
+  delayTimer = setTimeout(generateChart, 500);
 }
 
 //populate chart with actual data and update the chart.
