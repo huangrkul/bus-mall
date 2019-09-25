@@ -166,7 +166,7 @@ function imgClickHandler(event) {
   }
 }
 
-//generate all results as one list
+//populate result total with actual data
 function displayResult() {
   var resultLi = document.getElementsByClassName('resultList');
   for (var i=0; i < Products.allProds.length; i++) {
@@ -176,7 +176,7 @@ function displayResult() {
   generateChart();
 }
 
-//generate chart with all data
+//populate chart with actual data and update the chart.
 function generateChart() {
   chartViews = [];
   chartVotes = [];
@@ -225,6 +225,7 @@ function init() {
   }
 
   //create empty bar chart with labels and initial values from the above loop.
+  //Chart instantiates from chart.js constructor fucntion.
   theChart = new Chart(barChart, {
     type: 'bar',
     data: {
@@ -258,7 +259,7 @@ function init() {
     }
   });
 
-  //start rendering!
+  //start rendering first set of products.
   renderProds();
 }
 
