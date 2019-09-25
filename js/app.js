@@ -8,6 +8,9 @@ var totalTries = 5;
 //variables for html anchors
 var imgList = document.getElementById('imgsList');
 var resultBox = document.getElementById('resultBox');
+var voteAgain = document.getElementById('voteAgain');
+var clearData = document.getElementById('clearData');
+
 //hidden at start.
 resultBox.style.display = 'none';
 var results = document.getElementById('results');
@@ -24,26 +27,26 @@ var delayTimer = null;
 
 //object arguments: name and ext
 var objArray = [
-  ['bag','.jpg'],
-  ['banana','.jpg'],
-  ['bathroom','.jpg'],
-  ['boots','.jpg'],
-  ['breakfast','.jpg'],
-  ['bubblegum','.jpg'],
-  ['chair','.jpg'],
-  ['cthulhu','.jpg'],
-  ['dog-duck','.jpg'],
-  ['dragon','.jpg'],
-  ['pen','.jpg'],
-  ['pet-sweep','.jpg'],
-  ['scissors','.jpg'],
-  ['shark','.jpg'],
-  ['sweep','.jpg'],
-  ['tauntaun','.jpg'],
-  ['unicorn','.jpg'],
-  ['usb','.gif'],
-  ['water-can','.jpg'],
-  ['wine-glass','.jpg']
+  ['bag','img/bag.jpg'],
+  ['banana','img/banana.jpg'],
+  ['bathroom','img/bathroom.jpg'],
+  ['boots','img/boots.jpg'],
+  ['breakfast','img/breakfast.jpg'],
+  ['bubblegum','img/bubblegum.jpg'],
+  ['chair','img/chair.jpg'],
+  ['cthulhu','img/cthulhu.jpg'],
+  ['dog-duck','img/dog-duck.jpg'],
+  ['dragon','img/dragon.jpg'],
+  ['pen','img/pen.jpg'],
+  ['pet-sweep','img/pet-sweep.jpg'],
+  ['scissors','img/scissors.jpg'],
+  ['shark','img/shark.jpg'],
+  ['sweep','img/sweep.jpg'],
+  ['tauntaun','img/tauntaun.jpg'],
+  ['unicorn','img/unicorn.jpg'],
+  ['usb','img/usb.gif'],
+  ['water-can','img/water-can.jpg'],
+  ['wine-glass','img/wine-glass.jpg']
 ];
 
 var currentTries = 0;
@@ -60,11 +63,11 @@ var chartVoteColors = [];
 var chartVoteBorders = [];
 
 //uppercase first letter in constructor name!!!!
-function Products (name, ext) {
+function Products (name, path, views, clicked) {
   this.name = name;
-  this.image = 'img/' + name + ext;
-  this.views = 0;
-  this.clicked = 0;
+  this.image = path;
+  this.views = views;
+  this.clicked = clicked;
   //push all instants into an array.  (instead of giving name to each object)
   Products.allProds.push(this);
 }
@@ -186,6 +189,7 @@ function imgClickHandler(event) {
       prodImgArray[k].removeEventListener('click',imgClickHandler);
       prodImgArray[k].style.cursor = 'auto';
     }
+    storeData();
     resultBox.style.display = 'flex';
     footer.scrollIntoView();
     //set a delay for opacity animation in displayResult();
@@ -193,8 +197,36 @@ function imgClickHandler(event) {
   }
 }
 
+//store data to localStorage
+function storeData() {
+  localStorage.clear();
+  var data = JSON.stringify(Products.allProds);
+  localStorage.setItem('current',data);
+}
+
+//parse data from localStorage and re-instantiate from Products constructor function
+function parseDataPopulate() {
+  var data = localStorage.getItem('current');
+  var parsedData = JSON.parse(data);
+  console.log(parsedData);
+  for (var i=0; i < parsedData.length; i++) {
+    new Products(parsedData[i].name, parsedData[i].image, parsedData[i].views, parsedData[i].clicked);
+  }
+}
+
+function voteAgainHandler() {
+  location.reload();
+}
+
+function clearHandler() {
+  localStorage.clear();
+  location.reload();
+}
+
 //populate result total with actual data
 function displayResult() {
+  voteAgain.addEventListener('click',voteAgainHandler);
+  clearData.addEventListener('click',clearHandler);
   clearTimeout(delayTimer);
   resultBox.classList.remove('hide-results');
   resultBox.classList.add('show-results');
@@ -224,28 +256,8 @@ function generateChart() {
   theChart.update();
 }
 
-//constructor function instantiate
-//create empty result list with product names
-//create empty chart with product names
-function init() {
-
-  //instantiate objects
-  for(var i=0; i < objArray.length; i++){
-    new Products(objArray[i][0], objArray[i][1]);
-  }
-
-  //preload images to prevent image swap flickers due to img load.
-  for(var a=0; a < Products.allProds.length; a++){
-    var productImg = Products.allProds[a].image;
-    var preImg = document.createElement('img');
-    preImg.src = productImg;
-    preloadImgs.appendChild(preImg);
-  }
-
-  //display current total tries
-  totalRnds.textContent = totalTries;
-
-  //create empty result list
+//create empty result list
+function createEmptyList() {
   for (var k=0; k < Products.allProds.length; k++) {
     var empResultLi = document.createElement('li');
     var product = Products.allProds[k];
@@ -253,7 +265,9 @@ function init() {
     empResultLi.textContent = `${product.name}:`;
     results.appendChild(empResultLi);
   }
+}
 
+function createEmptyChart() {
   //fetch Products.allProds.name and push them into chartLabel
   //set initial bar data value, bar color, and bar border color
   for(var j=0; j < Products.allProds.length; j++) {
@@ -266,7 +280,6 @@ function init() {
     chartVoteColors.push('rgba(227,171,48,0.5)');
     chartVoteBorders.push('rgba(227,171,48,0.8)');
   }
-
   //create empty bar chart with labels and initial values from the above loop.
   //Chart instantiates from chart.js constructor fucntion.
   theChart = new Chart(barChart, {
@@ -301,8 +314,34 @@ function init() {
       }
     }
   });
+}
+
+//constructor function instantiate
+function init() {
+
+  //instantiate objects
+  if(localStorage.getItem('current') === null){
+    for(var i=0; i < objArray.length; i++){
+      new Products(objArray[i][0], objArray[i][1], 0, 0);
+    }
+  } else {
+    parseDataPopulate();
+  }
+
+  //preload images to prevent image swap flickers due to img load.
+  for(var a=0; a < Products.allProds.length; a++){
+    var productImg = Products.allProds[a].image;
+    var preImg = document.createElement('img');
+    preImg.src = productImg;
+    preloadImgs.appendChild(preImg);
+  }
+
+  //display current total tries
+  totalRnds.textContent = totalTries;
 
   //start rendering first set of products.
+  createEmptyList();
+  createEmptyChart();
   renderProds();
 }
 
