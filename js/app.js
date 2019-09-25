@@ -31,7 +31,7 @@ var objArray = [
   ['pet-sweep','.jpg'],
   ['scissors','.jpg'],
   ['shark','.jpg'],
-  ['sweep','.png'],
+  ['sweep','.jpg'],
   ['tauntaun','.jpg'],
   ['unicorn','.jpg'],
   ['usb','.gif'],
