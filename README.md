@@ -1,6 +1,12 @@
 # Bus-Mall
 Class 201 Week 3 Project
 
+Bus Mall is a web app that allows a user to vote for a product out of three randomly generated ones.  Each vote will trigger three more products (but unique from previous set) to be displayed for the user to vote.  Once user voted 25 times, the session will end and the total number of votes / viewed per product will be displayed below in the form of list and bar chart.
+
+Configurable Setting:
+- Number of displayed product.
+- Number of rounds per session.
+
 ## Day 1 branch - lab11-busmall
 - Implemented dynamic products display so it can be any number of images.
 - All products currently / previously displayed do not repeat.
